@@ -4,6 +4,7 @@ import bwapi.Game;
 import bwapi.Race;
 import bwapi.Unit;
 import bwapi.UnitType;
+import bwapi.Flag;
 import bwem.BWEM;
 import learning.Decisions;
 import learning.LearningManager;
@@ -47,6 +48,9 @@ public class Bot extends DefaultBWListener {
     @Override
     public void onStart() {
         game = bwClient.getGame();
+        game.enableFlag(Flag.UserInput);
+        game.setLocalSpeed(10);
+        game.setLatCom(true);
 
         // Load BWEM and analyze the info.map
         bwem = new BWEM(game);
